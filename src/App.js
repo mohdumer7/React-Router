@@ -6,9 +6,9 @@ import ProductDetail from "./pages/ProductDetail";
 import GenericError from "./pages/GenericError";
 
 ///////////////////////////////////////////////////////////////////////
-///
-//INDIVIDUAL ROUTING WITHOUT ANY LAYOUT             ///
-///
+//                                                                  ///
+//             INDIVIDUAL ROUTING WITHOUT ANY LAYOUT                ///
+//                                                                  ///
 // const router = createBrowserRouter([                             ///
 //   { path: "/", element: <Dummy /> },                             ///
 //   { path: "/products", element: <Dummy /> },                     ///
@@ -30,16 +30,22 @@ const router = createBrowserRouter([
     errorElement: <GenericError />,
     // An Error element can  be used in the routes for error Pages to display
     //we cab also custom throw error and render the error page
-    //these error pages can also be defined in the children routes forcustom errors
+    //these error pages can also be defined in the children routes for custom errors
     children: [
+      //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      //NOTICE we dont use XX"/products"XX but we use "products" as the PATH   |
+      //this is called relative route to its parent if "/products"is used in as|
+      //children then                                                          |
+      //it becomes abosule routing to the URL.                                 ]
+      //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       { path: "/", element: <Dummy /> },
-      { path: "/products", element: <Dummy /> },
-      //```````````````````````````````````````````````````````````````````````
-      //this is a dynamic route but how do we access the id of the product?   `
-      //check out the :productid become the dynamic value, how do we use it?  `
-      //in the product-details we use **useParams HOOK**,thats how we do it   `
-      { path: "/products/:productId", element: <ProductDetail /> },
-      //```````````````````````````````````````````````````````````````````````
+      { path: "products", element: <Dummy /> },
+      //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      //this is a dynamic route but how do we access the id of the product?   |
+      //check out the :productid become the dynamic value, how do we use it?  |
+      //in the product-details we use **useParams HOOK**,thats how we do it   |
+      { path: "products/:productId", element: <ProductDetail /> }, ///////////|
+      //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     ],
   },
 
