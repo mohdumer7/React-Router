@@ -102,8 +102,11 @@ const router = createBrowserRouter([
   {
     path: "/load-data/:data-Id",
     element: <Loader />,
-    action: () => {
+    action: ({ request, params }) => {
       //submit like forms or stuff
+      //automatically when a form is submitted
+      //but programatically we can submit action by using useSubmit HOOK
+      //submit({data},{method:'post',action:'/posts'(custom route path)})
     },
   },
 ]);
