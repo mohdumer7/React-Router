@@ -70,12 +70,41 @@ const router = createBrowserRouter([
   //there you go you have data even before the element is already loaded and ready for use |
   // But how we access the data?                                                           |
   // useLoaderData is HOOK how we get data out from this return value                      |
-  // Loader data can be used anywhere in the parent and the childrenalso get the access it |
+  // Loader data can be used anywhere in the parent and the children also get the access it|
+  // The loader id here is OPTIONAL but if you have children they can use this to access it|
   //_______________________________________________________________________________________|
   {
     path: "/load-data",
+    id: "loader-id",
     element: <Loader />,
-    loader: () => {},
+    loader: () => {
+      //load data into the element
+      return;
+    },
+  },
+  //_______________________________________________________________________________________
+  // This is a continuation expamle for dynamic loader where data is passed to the loader  |
+  // This is how you access the params in the loader function                              |
+  //_______________________________________________________________________________________|
+  {
+    path: "/load-data/:data-Id",
+    element: <Loader />,
+    loader: ({ request, params }) => {
+      const data = params.dataId;
+      return data;
+    },
+  },
+  //_______________________________________________________________________________________
+  // what is this action in the routes?                                                    |
+  // this is the action that can used to do actions to certain taska exp-send post request |
+  // after a form is submitted to the backend                                              |
+  //_______________________________________________________________________________________|
+  {
+    path: "/load-data/:data-Id",
+    element: <Loader />,
+    action: () => {
+      //submit like forms or stuff
+    },
   },
 ]);
 
